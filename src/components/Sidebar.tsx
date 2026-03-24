@@ -4,6 +4,7 @@ import { useState } from 'react';
 import History from './History';
 import Collections from './Collections';
 import Environments from './Environments';
+import TimingChart from './TimingChart';
 import { Clock, FolderOpen, Globe } from 'lucide-react';
 
 type SidebarTab = 'history' | 'collections' | 'environments';
@@ -38,6 +39,8 @@ export default function Sidebar() {
           );
         })}
       </div>
+
+      {active === 'history' && <TimingChart />}
 
       <div className="flex-1 overflow-hidden">
         {active === 'history' && <History />}
