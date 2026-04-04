@@ -13,9 +13,9 @@ function formatSize(bytes: number): string {
 }
 
 function statusColor(status: number): string {
-  if (status < 300) return 'text-green-400 bg-green-400/10';
-  if (status < 400) return 'text-yellow-400 bg-yellow-400/10';
-  return 'text-red-400 bg-red-400/10';
+  if (status < 300) return 'text-emerald-300 bg-emerald-500/15 ring-1 ring-emerald-500/30';
+  if (status < 400) return 'text-amber-300 bg-amber-500/15 ring-1 ring-amber-500/30';
+  return 'text-rose-300 bg-rose-500/15 ring-1 ring-rose-500/30';
 }
 
 export default function ResponsePanel() {
@@ -32,9 +32,9 @@ export default function ResponsePanel() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="flex items-center gap-3 text-gray-400">
-          <div className="w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
-          Sending request...
+        <div className="flex flex-col items-center gap-4 text-gray-400">
+          <div className="w-8 h-8 border-3 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm font-medium animate-pulse">Sending request...</span>
         </div>
       </div>
     );
@@ -55,8 +55,11 @@ export default function ResponsePanel() {
     return (
       <div className="flex items-center justify-center h-64 text-gray-500">
         <div className="text-center">
-          <FileText size={48} className="mx-auto mb-3 opacity-30" />
-          <p className="text-sm">Enter a URL and click Send to see the response</p>
+          <div className="mx-auto mb-4 w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center">
+            <FileText size={32} className="text-purple-400/50" />
+          </div>
+          <p className="text-sm font-medium">Enter a URL and click Send</p>
+          <p className="text-xs text-gray-600 mt-1">Response will appear here</p>
         </div>
       </div>
     );
